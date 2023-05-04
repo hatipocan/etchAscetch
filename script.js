@@ -9,11 +9,12 @@ function addGridPiece (num) {
         
         gridPiece.style.width = `${800/num-2}px`;
         gridPiece.style.height = `${800/num-2}px`;
+        let x = Math.round((Math.random() * 255));
+        let y = Math.round((Math.random() * 255));
+        let z = Math.round((Math.random() * 255));
         gridPiece.addEventListener('mouseover', () =>{
-            let x = Math.round((Math.random() * 255));
-            let y = Math.round((Math.random() * 255));
-            let z = Math.round((Math.random() * 255));
-            gridPiece.style.backgroundColor = `rgb(${x},${y},${z})`;
+            // tile colors converge to black on each mouse over
+            gridPiece.style.backgroundColor = `rgb(${x*=0.75},${y*=0.75},${z*=0.75})`;
 
         } )
         frameContainer.appendChild(gridPiece);
@@ -24,7 +25,7 @@ function addGridPiece (num) {
 
 // starter prompt for the web page with the user imput. which fires the function accordingly.
 
-let welcomeMessage = Number(prompt('Hello welcome to the scetch app. Please enter a number between 1-40'));
+let welcomeMessage = Number(prompt('Hello welcome to the scetch app. Please enter a number between 1 and 40'));
 
 if (welcomeMessage > 40) {
     alert('The number is too big!!!');
@@ -34,7 +35,7 @@ if (welcomeMessage > 40) {
 
 addGridPiece(welcomeMessage);
 
-// a restart condition if the button is pressed.
+// a restart condition if the reset button is pressed.
 
 const btn = document.getElementById('reset-button');
 btn.addEventListener('click', () => {
