@@ -6,10 +6,15 @@ function addGridPiece (num) {
     for (let i = num*num; i > 0 ; i-- ) {
         const frameContainer = document.getElementById('frame-container');
         const gridPiece = document.createElement('div');
+        
         gridPiece.style.width = `${800/num-2}px`;
         gridPiece.style.height = `${800/num-2}px`;
         gridPiece.addEventListener('mouseover', () =>{
-            gridPiece.style.backgroundColor = "black";
+            let x = Math.round((Math.random() * 255));
+            let y = Math.round((Math.random() * 255));
+            let z = Math.round((Math.random() * 255));
+            gridPiece.style.backgroundColor = `rgb(${x},${y},${z})`;
+
         } )
         frameContainer.appendChild(gridPiece);
         
